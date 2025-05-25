@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tilottama Hospital - Maintenance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="https://img.icons8.com/ios-filled/50/4a90e2/hospital-3.png">
+  <!-- Use more professional fonts: Inter for body, Lora for headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lora:wght@700&display=swap" rel="stylesheet">
+  <style>
+    html {
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+    body {
+      background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', Arial, sans-serif;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 2em;
+      padding: 0 1em;
+    }
+    .logo-title {
+      display: flex;
+      align-items: center;
+      gap: 0.7em;
+    }
+    .logo-title img {
+      width: 44px;
+      height: 44px;
+    }
+    .logo-title span {
+      font-family: 'Lora', serif;
+      font-size: 1.7rem;
+      color: #2d3e50;
+      letter-spacing: 1px;
+      text-shadow: 1px 2px 8px rgba(44, 62, 80, 0.08);
+      font-weight: 700;
+    }
+    .time {
+      font-size: 1rem;
+      color: #2d3e50;
+      background: rgba(255,255,255,0.7);
+      padding: 0.5em 1em;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px 0 rgba(31, 38, 135, 0.07);
+      font-family: 'Inter', monospace;
+      min-width: 110px;
+      text-align: right;
+    }
+    .welcome {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      color: #fff;
+      text-shadow: 2px 4px 12px rgba(44, 62, 80, 0.2);
+      margin-bottom: 0.5em;
+      animation: fadeInDown 1s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      justify-content: center;
+      font-weight: 700;
+      text-align: center;
+    }
+    .maintenance {
+      background: rgba(255,255,255,0.92);
+      padding: 2em 2em;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.13);
+      font-size: 1.1rem;
+      color: #333;
+      text-align: center;
+      animation: fadeInUp 1.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.7em;
+      max-width: 95vw;
+    }
+    .maintenance-emoji {
+      font-size: 2.2rem;
+      margin-bottom: 0.2em;
+      animation: spin 2s linear infinite;
+      display: inline-block;
+    }
+    .maintenance-icons {
+      font-size: 1.5rem;
+      margin-bottom: 0.5em;
+      color: #4a90e2;
+      display: flex;
+      gap: 0.5em;
+      justify-content: center;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @keyframes spin {
+      0% { transform: rotate(-10deg);}
+      50% { transform: rotate(10deg);}
+      100% { transform: rotate(-10deg);}
+    }
+    @media (max-width: 700px) {
+      .header {
+        max-width: 98vw;
+        flex-direction: column;
+        gap: 0.7em;
+        align-items: flex-start;
+        transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+      }
+      .logo-title span {
+        font-size: 1.2rem;
+        transition: font-size 0.4s cubic-bezier(0.4,0,0.2,1);
+      }
+      .logo-title img {
+        width: 36px;
+        height: 36px;
+        transition: width 0.4s, height 0.4s cubic-bezier(0.4,0,0.2,1);
+      }
+      .welcome {
+        font-size: 1.3rem;
+        transition: font-size 0.4s cubic-bezier(0.4,0,0.2,1);
+      }
+      .maintenance {
+        padding: 1.2em 0.7em;
+        font-size: 1rem;
+        transition: padding 0.4s, font-size 0.4s cubic-bezier(0.4,0,0.2,1);
+      }
+    }
+    /* Add transitions for desktop as well */
+    .header,
+    .logo-title span,
+    .logo-title img,
+    .welcome,
+    .maintenance {
+      transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+  </style>
+  <script>
+    // Live clock
+    function updateTime() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString();
+      document.getElementById('current-time').textContent = timeString;
+    }
+    window.onload = function() {
+      updateTime();
+      setInterval(updateTime, 1000);
+    }
+  </script>
+</head>
+<body>
+  <div class="header">
+    <div class="logo-title">
+      <img src="https://img.icons8.com/ios-filled/50/4a90e2/hospital-3.png" alt="Hospital Logo">
+      <span>Tilottama Hospital</span>
+    </div>
+    <div class="time" id="current-time"></div>
+  </div>
+  <div class="welcome">
+    <span>👋</span> Welcome to Tilottama Hospital!
+  </div>
+  <div class="maintenance">
+    <span class="maintenance-emoji">🛠️</span>
+    <strong>Our website is currently undergoing scheduled maintenance.</strong><br>
+    We’ll be back soon. Thank you for your patience!
+  </div>
+</body>
+</html>
